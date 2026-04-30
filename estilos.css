@@ -1,0 +1,448 @@
+/*****************************************************************************/
+/* Módulo profesional: Lenguajes de marcas y sistemas de gestión empresarial */
+/* Unidad didáctica 04: Definición y validación de JSON                      */
+/* Práctica: Chistes de Chuck Norris                                         */
+/*****************************************************************************/
+
+:root {
+  /* Paleta Chuck Norris */
+  --chuck-red: #c41e1e;
+  --chuck-dark: #1a1a1a;
+  --chuck-dark-medium: #2a2a2a;
+  --chuck-dark-light: #1f1f1f;
+  --chuck-gold: #ffd700;
+  --chuck-light: #f8f1e1;
+  --chuck-silver: #c0c0c0;
+  --chuck-bronze: #cd7f32;
+  --chuck-orange: #ff6b00;
+  
+  /* Sombras */
+  --shadow-heavy: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(196, 30, 30, 0.7);
+  --shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  --shadow-inset: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/************************************/
+/* Estilos base para toda la página */
+/************************************/
+
+  * {
+      margin: 0;                          /* Elimina el margen por defecto de todos los elementos */
+      padding: 0;
+      box-sizing: border-box;             /* Asegura que el padding y los bordes no aumenten el ancho/alto total del elemento */
+  }
+
+/************************/
+/* Estilos para el body */
+/************************/
+
+  body {
+      /* Estos son los estilos que van a hacer que el body se configure correctamente */
+      min-height: 100vh;                  /* Asegura que la altura mínima de la página sea la del viewport (pantalla) */
+      display: flex;                      /* Utiliza Flexbox para alinear los elementos de la lista en una fila */
+      flex-direction: column;             /* Alinea los hijos (cabecera, navegación, etc.) verticalmente */
+      /********************************************************************************/
+      color: var(--chuck-light);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: white;
+  }
+
+/************************/
+/* Estilos para el main */
+/************************/
+
+  main {
+      flex: 1;        /* Hace que el contenido principal crezca para llenar el espacio disponible, es decir, el body ocupará el espacio total entre header y footer */
+      padding: 2rem;
+  }
+
+/****************************/
+/* Estilos para la cabecera */
+/****************************/
+
+  .contenedor-cabecera {
+    background: linear-gradient(to right, var(--chuck-dark), var(--chuck-red), var(--chuck-dark));
+    color: var(--chuck-gold);
+    padding: 1rem 2rem;
+    text-align: center;
+    border-bottom: 5px solid var(--chuck-gold);
+    box-shadow: var(--shadow-heavy);
+    overflow: hidden;
+  }
+
+  .texto-logo h1 {
+    font-family: 'Bebas Neue', 'Black Ops One', 'Anton', sans-serif;
+    font-size: 2.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8), 0 0 10px rgba(255, 215, 0, 0.5);
+    animation: efecto_brillo_titulo_cabecera 3s infinite alternate;
+  }
+
+  .subtitulo-logo {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.2rem;
+    color: var(--chuck-silver);
+    letter-spacing: 1px;
+  }
+
+/***************************************/
+/* Estilos para el contenido principal */
+/***************************************/
+
+  .contenido-principal {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+/*************************************************************************/
+/* Estilos para el contenedor de todo lo relacionado a obtener el chiste */
+/*************************************************************************/
+
+  .tarjeta-chiste-chuck {
+    background: linear-gradient(145deg, var(--chuck-dark-medium), var(--chuck-dark-light));
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem;
+    border: 3px solid var(--chuck-red);
+    box-shadow: var(--shadow-heavy), var(--shadow-glow);
+    width: 60%;
+  }
+
+  .tarjeta-chiste-cabecera {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .tarjeta-chiste-cabecera h2 {
+    font-family: 'Black Ops One', cursive;
+    font-size: 2.2rem;
+    color: var(--chuck-gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: var(--shadow-text);
+  }
+
+  .estrella {
+    color: var(--chuck-gold);
+    font-size: 2rem;
+    animation: efecto_giro 4s linear infinite;
+  }
+
+  .contenedor-imagen-chuck {
+    margin: 2rem auto;
+    width: 220px;
+    height: 220px;
+  }
+
+  .imagen-chuck {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 5px solid var(--chuck-gold);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+    animation: efecto_flotar 6s ease-in-out infinite;
+  }
+
+    /*****************************************/
+    /* Estilos para el contenedor del chiste */
+    /*****************************************/
+
+    .contenedor-chiste {
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 15px;
+      padding: 1rem;
+      border: 2px solid var(--chuck-bronze);
+
+      height: 100px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .chiste-texto {
+      font-size: 1.4rem;
+      color: var(--chuck-light);
+      font-style: italic;
+    }
+
+    /***************************************************/
+    /* Estilos para los elementos de obtener el chiste */
+    /***************************************************/
+
+    .elementos-control-chiste {
+      margin-top: 2rem;
+    }
+
+    .contenedor-categorias {
+      margin-bottom: 2rem;
+    }
+
+    .contenedor-categorias label {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      color: var(--chuck-silver);
+      margin-bottom: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    .categoria-select {
+      width: 400px;
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      border: 3px solid var(--chuck-gold);
+      background: rgba(0, 0, 0, 0.8);
+      color: var(--chuck-light);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      appearance: none;                       /* Elimina los elementos originales del select */
+      /* Imagen del triángulo hacia abajo de la lista de categorías */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23ffd700' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1.5rem center;
+      background-size: 1.5rem;
+    }
+
+    /*
+      :focus se dispara cuando el elemento está "enfocado", es decir, cuando está activo o seleccionado por el usuario.
+    */
+    .categoria-select:hover, .categoria-select:focus {
+      border-color: var(--chuck-red);
+      box-shadow: 0 0 15px rgba(196, 30, 30, 0.5);
+      outline: none;                                  /* Elimina el contorno o "borde de foco" que los navegadores dibujan automáticamente alrededor de los elementos cuando están enfocados (seleccionados) */
+    }
+
+    /*******************************************/
+    /* Estilos para el botón de obtener chiste */
+    /*******************************************/
+
+    .boton-obtener-chiste {
+      background: linear-gradient(45deg, var(--chuck-red), var(--chuck-orange));
+      color: white;
+      border: none;
+      padding: 1.2rem 3rem;
+      font-size: 1.5rem;
+      font-family: 'Black Ops One', cursive;
+      border-radius: 50px;
+      cursor: pointer;
+      overflow: hidden;                                   /* Esconde cualquier contenido que se salga de los límites de su contenedor */
+      transition: all 0.3s ease;
+      margin: 1.5rem auto;
+      display: block;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      box-shadow: 0 10px 20px rgba(196, 30, 30, 0.4);
+    }
+
+    .boton-obtener-chiste:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(196, 30, 30, 0.6);
+      letter-spacing: 3px;
+    }
+
+    /* :active se activa SOLAMENTE mientras el botón está siendo presionado/clicado (durante el clic) */
+    .boton-obtener-chiste:active {
+      transform: translateY(0);
+      box-shadow: 0 5px 15px rgba(196, 30, 30, 0.4);
+    }
+
+    /* Estilo para cuando el botón de obtener chiste, obtener chiste aleatorio y copiar chiste está deshabilitado */
+    .boton-obtener-chiste:disabled, .mini-boton:disabled {
+      background: linear-gradient(45deg, #4a4a4a, #2a2a2a);
+      color: #888;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.3),
+        inset 0 0 10px rgba(0, 0, 0, 0.5);
+      border: 3px solid #555;
+      opacity: 0.8;
+      pointer-events: none;     /* Desactiva todos los efectos hover */
+    }
+
+    .texto-boton-chiste {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    /*************************************************************************************/
+    /* Estilos los elementos de chiste aleatorio, copiar el chiste y contador de chistes */
+    /*************************************************************************************/
+
+    .elementos-control-chiste-extra {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .mini-boton {
+      background: rgba(255, 215, 0, 0.2);
+      color: var(--chuck-gold);
+      border: 2px solid var(--chuck-gold);
+      padding: 0.7rem 1.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .mini-boton:hover {
+      background: rgba(255, 215, 0, 0.4);
+      transform: scale(1.05);
+    }
+
+    .contenedor-contador-chistes {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 0.7rem 1.5rem;
+      border-radius: 30px;
+      border: 2px solid var(--chuck-red);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 1.1rem;
+    }
+
+/*****************************/
+/* Estilos del pie de página */
+/*****************************/
+
+  footer {
+    background: linear-gradient(to right, var(--chuck-dark), #111, var(--chuck-dark));
+    color: var(--chuck-silver);
+    padding: 2.5rem 2rem 1.5rem;
+    border-top: 5px solid var(--chuck-red);
+  }
+
+  .contenido-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .seccion-footer {
+    flex: 1;
+    min-width: 250px;
+  }
+
+  .seccion-footer h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--chuck-gold);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .nombre-autor {
+    color: var(--chuck-orange);
+    text-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+    animation: efecto_brillo_nombre_autor 2s infinite alternate;
+  }
+
+  .derechosautor-footer {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 215, 0, 0.3);
+  }
+
+/**************************/
+/* Animaciones utilizadas */
+/**************************/
+
+@keyframes efecto_brillo_titulo_cabecera {
+  0% { text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8), 0 0 10px rgba(255, 215, 0, 0.5); }
+  100% { text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6); }
+}
+
+@keyframes efecto_giro {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes efecto_flotar {
+  0%, 100% { transform: translateY(0) rotateY(0deg); }
+  50% { transform: translateY(-15px) rotateY(10deg); }
+}
+
+@keyframes efecto_brillo_nombre_autor {
+  0% { text-shadow: 0 0 10px rgba(255, 107, 0, 0.5); }
+  100% { text-shadow: 0 0 15px rgba(255, 107, 0, 0.8), 0 0 25px rgba(255, 107, 0, 0.6); }
+}
+
+/****************************/
+/* Configuración responsive */
+/****************************/
+
+@media (max-width: 768px) {
+  .texto-logo h1 {
+    font-size: 2rem;
+  }
+  
+  .tarjeta-chiste-cabecera h2 {
+    font-size: 1.6rem;
+  }
+  
+  .chiste-texto {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+  }
+  
+  .boton-obtener-chiste {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+  }
+  
+  .stats {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contenido-footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .texto-logo h1 {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+  }
+  
+  .contenedor-imagen-chuck {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .tarjeta-chiste-chuck {
+    padding: 1.5rem;
+  }
+  
+  .elementos-control-chiste-extra {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
